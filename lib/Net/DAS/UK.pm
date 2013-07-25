@@ -32,3 +32,21 @@ sub parse {
 }
 
 1;
+
+=pod
+
+=head1 NAME
+
+Net::DAS::UK - A simple DAS (Domain Availabilty Seach) client, UK extension.
+
+See L<Net::DAS>
+
+=head1 AUTHOR
+
+Michael Holloway <michael@thedarkwinter.com>
+
+=head1 LICENSE
+
+Artistic License
+
+=cut 

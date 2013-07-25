@@ -28,7 +28,21 @@ sub parse {
     return (-100) ;
 }
 
-
-
-
 1;
+=pod
+
+=head1 NAME
+
+Net::DAS::LT - A simple DAS (Domain Availabilty Seach) client, LT extension.
+
+See L<Net::DAS>
+
+=head1 AUTHOR
+
+Michael Holloway <michael@thedarkwinter.com>
+
+=head1 LICENSE
+
+Artistic License
+
+=cut 

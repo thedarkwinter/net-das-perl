@@ -1,4 +1,39 @@
 #!/usr/bin/perl -w
+
+=pod
+
+=head1 NAME
+
+Net::DAS - A simple DAS (Domain Availabilty Seach) client.
+
+=head1 SYNOPSIS
+
+Shell script for L<Net::DAS>
+
+  Usage: das [switch] [timeout] domain.tld [domain2.tld] ...
+  Switches:
+  -h      help
+  -v      print version
+  -e      exit code only (only works when quering a single domain)
+  -r      use registrar das servers where available (normally requires signup/ip whitelist)
+  Examples:
+  das test1.eu test2.be test3.no
+  das -er 3 test.eu
+
+=head1 DESCRIPTION
+
+Net::DAS is a client that aims to simplify using DAS with multiple registries by having small submodules (see L<Net::DAS::*>) to iron out the differences in the servers. It also inclused a shell script  L<Net::DAS::das> to do lookups from the command line.
+
+=head1 AUTHOR
+
+Michael Holloway <michael@thedarkwinter.com>
+
+=head1 LICENSE
+
+Artistic License
+
+=cut 
+
 use 5.010;
 use strict;
 use warnings;
