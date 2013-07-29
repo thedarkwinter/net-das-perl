@@ -11,7 +11,6 @@ use Net::DAS;
 #### TESTING REQUEST METHOD
 our $RES;
 sub my_request {
-     my  ($das,$dom) = @_;
     our $RES;
     return "% .eu Domain Availability Server 1.0\n".
     "%\n".

@@ -4,7 +4,6 @@ use 5.010;
 use strict;
 use warnings;
 use Test::More tests => 17;
-use Data::Dumper;
 
 use Net::DAS;
 
@@ -12,8 +11,8 @@ use Net::DAS;
 #### TESTING REQUEST METHOD
 our $RES;
 sub my_request {
-     my  ($das,$dom) = @_;
-    our $RES;
+     my  ($das,$query) = @_;
+     our $RES;
      return "% DAS Server\n" . $RES . "\n";
 }
 

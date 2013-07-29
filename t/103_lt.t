@@ -11,7 +11,6 @@ use Net::DAS;
 #### TESTING REQUEST METHOD
 our $RES;
 sub my_request {
-     my  ($das,$dom) = @_;
     our $RES;
     return "% .lt registry DAS service\n".$RES ."\n";
 }

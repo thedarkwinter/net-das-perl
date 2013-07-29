@@ -2,7 +2,6 @@ package Net::DAS::NO;
 use 5.010;
 use strict;
 use warnings;
-use Data::Dumper;
 
 sub register {
     return { 

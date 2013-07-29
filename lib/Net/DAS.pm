@@ -80,7 +80,6 @@ sub new {
 			next;
 		}
 	}
-	#print Dumper $self;
 	return $self;
 }
 
@@ -137,7 +136,6 @@ sub lookup {
 		}
 		$b->{$i} = $r;
 	};
-	#print Dumper $b;
 	$self->_close_ports();
 	return $b;
 }
@@ -201,7 +199,6 @@ sub _send_request {
 		$self->{$m}->{sock}->close();
 		undef $self->{$m}->{sock};
 	}
-	#print Dumper $res;
 	return $res;
 }
 

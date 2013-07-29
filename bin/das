@@ -38,7 +38,7 @@ use 5.010;
 use strict;
 use warnings;
 use Net::DAS;
-use Data::Dumper;
+
 sub usage {
         my $a = shift;
         print "Usage: das [switch] [timeout] domain.tld [domain2.tld] ...\n";
