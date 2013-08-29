@@ -4,7 +4,7 @@ package Net::DAS;
 
 =head1 NAME
 
-Net::DAS - A simple DAS (Domain Availabilty Seach) client.
+Net::DAS - Simple Domain Availabilty Seach client.
 
 =head1 SYNOPSIS
 
