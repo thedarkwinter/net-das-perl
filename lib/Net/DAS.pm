@@ -41,8 +41,8 @@ use Module::Load;
 use IO::Socket::INET;
 use Time::HiRes qw (usleep);
 
-our $VERSION = '0.15';
-our @modules = qw (EU BE NO LT UK SI IT GENT);
+our $VERSION = '0.16';
+our @modules = qw (EU BE NO LT UK SI IT GENT SE NU);
 
 =pod
 
@@ -122,7 +122,7 @@ sub lookup {
 			chomp ($r->{'response'} = $self->{_request}->($self,$r->{'query'},$r->{module}));
 			alarm 0;
 
-			$r->{'avail'} = defined($disp->[1]) ? $disp->[1]->($r->{'response'}) : $self->_parse($r->{'response'});
+			$r->{'avail'} = defined($disp->[1]) ? $disp->[1]->($r->{'response'},$i) : $self->_parse($r->{'response'},$i);
 			$r->{'reason'} = 'AVAILABLE' if $r->{'avail'} == 1;
 			$r->{'reason'} = 'NOT AVAILABLE' if $r->{'avail'} == 0;
 			$r->{'reason'} = 'NOT VALID' if $r->{'avail'} == -1;
