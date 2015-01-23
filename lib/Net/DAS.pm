@@ -41,7 +41,7 @@ use Module::Load;
 use IO::Socket::INET;
 use Time::HiRes qw (usleep);
 
-our $VERSION = '0.17';
+our $VERSION = '0.18';
 our @modules = qw (EU BE NO LT UK SI IT GENT SE NU);
 
 =pod

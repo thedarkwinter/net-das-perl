@@ -4,8 +4,6 @@ use 5.010;
 use strict;
 use warnings;
 use Test::More tests => 12;
-eval { no warnings; require Test::LongString; Test::LongString->import(max => 100); $Test::LongString::Context=50; };
-
 
 use Net::DAS;
 
@@ -38,8 +36,8 @@ is($c->{'domain'},'test.nu','domain ok');
 is($c->{'label'},'test','label ok');
 is($c->{'tld'},"nu",'tld ok');
 is($c->{'module'},'Net::DAS::NU','module ok');
-is_string($c->{'query'},"GET /free?q=test.nu HTTP/1.1\nhost: free.iis.nu\n",'query ok');
-is_string($c->{'response'},"HTTP/1.1 200 OK\nServer: nginx/0.7.65\nDate: Thu, 22 Jan 2015 12:47:23 GMT\nContent-Type: text/html\nTransfer-Encoding: chunked\nConnection: close\n\n10\nfree test.nu\n0\n",'response ok');
+is($c->{'query'},"GET /free?q=test.nu HTTP/1.1\nhost: free.iis.nu\n",'query ok');
+is($c->{'response'},"HTTP/1.1 200 OK\nServer: nginx/0.7.65\nDate: Thu, 22 Jan 2015 12:47:23 GMT\nContent-Type: text/html\nTransfer-Encoding: chunked\nConnection: close\n\n10\nfree test.nu\n0\n",'response ok');
 is($c->{'avail'},1,"avail ok (available)");
 is($c->{'reason'},'AVAILABLE',"reason ok (available)");
 $a = $das->available('test.nu');

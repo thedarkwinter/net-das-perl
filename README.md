@@ -1,5 +1,8 @@
 ### Net::DAS
 Simple DAS (Domain Availability Service) Client for Perl
+
+Supported TLDs: be eu gent it lt no nu se si uk
+
 * * *
 #### Installation
 ``` shell
@@ -21,3 +24,4 @@ Examples:
 das test1.eu test2.be test3.no
 das -er 3 test.eu
 ```
+

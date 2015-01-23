@@ -1,3 +1,6 @@
+0.18 : Fri 23 Jan 2015
+    -  Removed Test::LongString / is_string as it was causing failures on CPAN
+
 0.17 : Thu 22 Jan 2015
     -  Fixed MANIFEST / CPAN Version
 
