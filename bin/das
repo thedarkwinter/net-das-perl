@@ -40,59 +40,59 @@ use warnings;
 use Net::DAS;
 
 sub usage {
-        my $a = shift;
-        print "Usage: das [switch] [timeout] domain.tld [domain2.tld] ...\n";
-        exit 0 unless $a;
-        print "     Switches:\n";
-        print "     -h      this help screen\n";
-        print "     -v      print version\n";
-        print "     -e      exit code only (only works when quering a single domain)\n";
-        print "     -r      use registrar das servers where available (normally requires signup/ip whitelist)\n";
-        print "     Examples:\n";
-        print "             das test1.eu test2.be test3.no\n";
-        print "             das -er 3 test.eu\n";
-        exit 1;
+    my $a = shift;
+    print "Usage: das [switch] [timeout] domain.tld [domain2.tld] ...\n";
+    exit 0 unless $a;
+    print "     Switches:\n";
+    print "     -h      this help screen\n";
+    print "     -v      print version\n";
+    print "     -e      exit code only (only works when quering a single domain)\n";
+    print "     -r      use registrar das servers where available (normally requires signup/ip whitelist)\n";
+    print "     Examples:\n";
+    print "             das test1.eu test2.be test3.no\n";
+    print "             das -er 3 test.eu\n";
+    exit 1;
 }
 
 sub version {
-        print "Version " . $Net::DAS::VERSION ."\n";
-        exit 0;
+    print "Version " . $Net::DAS::VERSION . "\n";
+    exit 0;
 }
 
 usage() unless $#ARGV >= 0;
-my (@domains,@switches,$timeout,$exitcode,$registrar);
+my ( @domains, @switches, $timeout, $exitcode, $registrar );
 
 foreach my $a (@ARGV) {
-        if ($a =~ m/^[0-9]*$/) { 
-                $timeout = $a;  
-                next; 
-        }
-        if ($a  =~ /^-/) {
-                $a =~ s/^-//;
-                if ($a =~ m/h/) { usage(1);}
-                if ($a =~ m/v/) { version(); }
-                if ($a =~ m/e/) { $exitcode=1; }
-                if ($a =~ m/r/) { $registrar=1; }
-                next;
-        }
-        push @domains,$a;
+    if ( $a =~ m/^[0-9]*$/ ) {
+        $timeout = $a;
+        next;
+    }
+    if ( $a =~ /^-/ ) {
+        $a =~ s/^-//;
+        if ( $a =~ m/h/ ) { usage(1); }
+        if ( $a =~ m/v/ ) { version(); }
+        if ( $a =~ m/e/ ) { $exitcode = 1; }
+        if ( $a =~ m/r/ ) { $registrar = 1; }
+        next;
+    }
+    push @domains, $a;
 }
 
 usage() unless $#domains >= 0;
 
 my $opt = {};
-$opt->{'timeout'} = $timeout if defined $timeout;
-$opt->{'use_registrar'} = 1 if defined $registrar;
+$opt->{'timeout'}       = $timeout if defined $timeout;
+$opt->{'use_registrar'} = 1        if defined $registrar;
 my $das = Net::DAS->new($opt);
 
 $b = $das->lookup(@domains);
 foreach (@domains) {
-        if ($#domains==0 && defined $exitcode) { 
-                $das->DESTROY();
-                exit 0 if ($b->{$_}->{'avail'}==1);
-                exit 1;
-        }
-        print "$_ ". $b->{$_}->{'reason'}. "\n";
+    if ( $#domains == 0 && defined $exitcode ) {
+        $das->DESTROY();
+        exit 0 if ( $b->{$_}->{'avail'} == 1 );
+        exit 1;
+    }
+    print "$_ " . $b->{$_}->{'reason'} . "\n";
 }
 
 exit 0;

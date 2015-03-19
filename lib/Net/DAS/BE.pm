@@ -4,14 +4,14 @@ use strict;
 use warnings;
 
 sub register {
-    return { 
-		tlds => [qw(be)],
-		public => {
-				host => 'das.dns.be',
-				port => 4343,
-				},
-		dispatch => [undef, undef],
-	};
+    return {
+        tlds   => [qw(be)],
+        public => {
+            host => 'das.dns.be',
+            port => 4343,
+        },
+        dispatch => [ undef, undef ],
+    };
 }
 
 1;

@@ -4,13 +4,13 @@ use strict;
 use warnings;
 
 sub register {
-    return { 
-		tlds => [qw(it co.it)],
-		public => {
-				host => 'das.nic.it',
-				port => 4343,
-				},
-	};
+    return {
+        tlds   => [qw(it co.it)],
+        public => {
+            host => 'das.nic.it',
+            port => 4343,
+        },
+    };
 }
 
 1;
