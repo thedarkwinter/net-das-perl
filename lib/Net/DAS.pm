@@ -42,7 +42,7 @@ use IO::Socket::INET;
 use Time::HiRes qw (usleep);
 
 our $VERSION = '0.18';
-our @modules = qw (EU BE NO LT UK SI IT GENT SE NU);
+our @modules = qw (EU BE NO LT UK SI IT GENT SE NU RO);
 
 =pod
 
@@ -187,13 +187,13 @@ sub _send_request {
     my $h   = $self->{$m}->{$svc}->{host};
     my $p   = defined $self->{$m}->{$svc}->{port} ? $self->{$m}->{public}->{port} : 4343;
     my $pr  = defined $self->{$m}->{$svc}->{proto} ? $self->{$m}->{public}->{proto} : 'tcp';
+    my $nl  = defined $self->{$m}->{nl} ? $self->{$m}->{nl} : "\n";
     if ( !$self->{$m}->{sock} || !$self->{$m}->{sock}->connected() ) {
         $self->{$m}->{sock} = IO::Socket::INET->new( PeerAddr => $h, PeerPort => $p, Proto => $pr, Timeout => 30 )
             || croak("Unable to connect to $h:$p $@");
     }
-
     #usleep($self->{$m}->{delay}) if exists $self->{$m}->{delay};
-    $self->{$m}->{sock}->syswrite( $q . "\n" );
+    $self->{$m}->{sock}->syswrite( $q . "$nl" );
     my ( $res, $buf );
     while ( $self->{$m}->{sock}->sysread( $buf, 1024 ) ) {
         $res .= $buf;
