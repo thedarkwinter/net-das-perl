@@ -18,6 +18,7 @@ BEGIN {
     use_ok('Net::DAS::GENT');
     use_ok('Net::DAS::SE');
     use_ok('Net::DAS::NU');
+    use_ok('Net::DAS::RO');
 }
 
 exit 0;
