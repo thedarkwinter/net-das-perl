@@ -1,7 +1,7 @@
 ### Net::DAS
 Simple DAS (Domain Availability Service) Client for Perl
 
-Supported TLDs: be eu gent it lt no nu se si uk
+Supported TLDs: be eu gent it lt no nu  ro se si uk
 
 * * *
 #### Installation

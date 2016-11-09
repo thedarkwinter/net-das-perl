@@ -41,7 +41,7 @@ use Module::Load;
 use IO::Socket::INET;
 use Time::HiRes qw (usleep);
 
-our $VERSION = '0.18';
+our $VERSION = '0.19';
 our @modules = qw (EU BE NO LT UK SI IT GENT SE NU RO);
 
 =pod
@@ -192,6 +192,7 @@ sub _send_request {
         $self->{$m}->{sock} = IO::Socket::INET->new( PeerAddr => $h, PeerPort => $p, Proto => $pr, Timeout => 30 )
             || croak("Unable to connect to $h:$p $@");
     }
+
     #usleep($self->{$m}->{delay}) if exists $self->{$m}->{delay};
     $self->{$m}->{sock}->syswrite( $q . "$nl" );
     my ( $res, $buf );
