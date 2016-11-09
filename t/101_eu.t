@@ -13,11 +13,14 @@ our $RES;
 
 sub my_request {
     our $RES;
-    return
-          "% .eu Domain Availability Server 1.0\n" . "%\n"
-        . "% (c) 2005 (http://www.eurid.eu)\n" . "%\n" . "\n"
-        . "%%RC=0\n"
-        . $RES . "\n";
+    return 	"% \"\"\n".
+    		"%\n".
+           	"% .eu Domain Availability Server\n".
+           	"%\n".
+        	"% (c) 2005 (http://www.eurid.eu)\n".
+        	"%\n" . "\n".
+        	"%RC=0\n".
+        	$RES . "\n";
 }
 
 my ( $c, $a, $das );
@@ -31,9 +34,9 @@ is( $c->{'domain'}, 'test.eu',      'domain ok' );
 is( $c->{'label'},  'test',         'label ok' );
 is( $c->{'tld'},    "eu",           'tld ok' );
 is( $c->{'module'}, 'Net::DAS::EU', 'module ok' );
-is( $c->{'query'},  'get 2.0 test', 'query ok' );
+is( $c->{'query'},  'test.eu', 'query ok' );
 is( $c->{'response'},
-    "% .eu Domain Availability Server 1.0\n%\n% (c) 2005 (http://www.eurid.eu)\n%\n\n%%RC=0\nDomain: test.eu\nStatus: AVAILABLE",
+    "% \"\"\n%\n% .eu Domain Availability Server\n%\n% (c) 2005 (http://www.eurid.eu)\n%\n\n%RC=0\nDomain: test.eu\nStatus: AVAILABLE",
     'response ok'
 );
 is( $c->{'avail'},  1,           "avail ok (available)" );

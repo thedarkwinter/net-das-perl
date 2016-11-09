@@ -14,14 +14,8 @@ sub register {
             host => 'das.registry.eu',
             port => 4343,
         },
-        dispatch => [ \&query, undef ],
+        dispatch => [ undef, undef ],
     };
-}
-
-sub query {
-    my $d = shift;
-    $d =~ s/.eu.*$//;
-    return "get 2.0 " . $d;
 }
 
 1;
